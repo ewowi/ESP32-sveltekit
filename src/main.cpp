@@ -30,6 +30,8 @@ LightStateService lightStateService = LightStateService(&server,
                                                         &esp32sveltekit,
                                                         &lightMqttSettingsService);
 
+#include "drivertest.h"
+
 void setup()
 {
     // start serial and filesystem
@@ -42,10 +44,16 @@ void setup()
     lightStateService.begin();
     // start the light service
     lightMqttSettingsService.begin();
+
+    setupDriver();
+
 }
 
 void loop()
 {
     // Delete Arduino loop task, as it is not needed in this example
-    vTaskDelete(NULL);
+    // vTaskDelete(NULL);
+
+    loopDriver();
+
 }

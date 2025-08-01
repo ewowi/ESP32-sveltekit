@@ -242,7 +242,7 @@ void WiFiSettingsService::configureNetwork(wifi_settings_t &network)
     WiFi.begin(network.ssid.c_str(), network.password.c_str(), network.channel, network.bssid);
     // WiFi.begin(network.ssid.c_str(), network.password.c_str());
 
-#if CONFIG_IDF_TARGET_ESP32C3
+#if CONFIG_IDF_TARGET_ESP32C3 | LOLIN_WIFI_FIX // 🌙
     WiFi.setTxPower(WIFI_POWER_8_5dBm); // https://www.wemos.cc/en/latest/c3/c3_mini_1_0_0.html#about-wifi
 #endif
 }
